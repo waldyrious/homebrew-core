@@ -1,10 +1,9 @@
 class Modsecurity < Formula
   desc "Libmodsecurity is one component of the ModSecurity v3 project"
   homepage "https://github.com/owasp-modsecurity/ModSecurity"
-  url "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v3.0.14/modsecurity-v3.0.14.tar.gz"
-  sha256 "f7599057b35e67ab61764265daddf9ab03c35cee1e55527547afb073ce8f04e8"
+  url "https://github.com/owasp-modsecurity/ModSecurity/releases/download/v3.0.15/modsecurity-v3.0.15.tar.gz"
+  sha256 "c276c838df6b61d96aa52075aee17d426af52755e16d09edca9f9d718696fda7"
   license "Apache-2.0"
-  revision 2
 
   bottle do
     sha256 cellar: :any,                 arm64_tahoe:   "903816449f1b48c8e20a657b978b80f93ee3f721ebb78a6c1216260983c60b67"
