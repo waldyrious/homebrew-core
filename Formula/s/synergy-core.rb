@@ -1,10 +1,10 @@
 class SynergyCore < Formula
   desc "Synergy, the keyboard and mouse sharing tool"
   homepage "https://symless.com/synergy"
-  url "https://github.com/symless/synergy/archive/refs/tags/v1.20.1.tar.gz"
-  sha256 "9fff6a15893e3d8862d1948612f17c2e1bca501f8b7c892b9d14e3be13dc3770"
+  url "https://github.com/symless/synergy/archive/refs/tags/v1.20.2.tar.gz"
+  sha256 "f80270bcf1dcaaa6e91c39747292428573f99ccf80116a0fee71de145c12b667"
   license "GPL-2.0-only" => { with: "openvpn-openssl-exception" }
-  head "https://github.com/symless/synergy-core.git", branch: "master"
+  head "https://github.com/symless/synergy.git", branch: "master"
 
   # This repository contains old 2.0.0 tags, one of which uses a stable tag
   # format (`v2.0.0-stable`), despite being marked as "pre-release" on GitHub.
@@ -60,6 +60,13 @@ class SynergyCore < Formula
     # but it's submodule uses ssh protocol which will be failed in CI
     # and so we use tarball of `synergy` and apply patch to ignore git process
     patch :DATA
+  end
+
+  # Fix VERSION file not updated for 1.20.2 release
+  # Upstream pr ref, https://github.com/symless/synergy/pull/179
+  patch do
+    url "https://github.com/symless/synergy/commit/0953f62ba8a98eaa87eee2857efef5f5ef64a87e.patch?full_index=1"
+    sha256 "5701a3d18b91458b0e44fb420d362f68e7787da2798d46e42bfd913e62bade38"
   end
 
   def install
@@ -156,12 +163,12 @@ index 0ea44d0..392f6a0 100644
 @@ -51,36 +51,6 @@ function(version_from_git_tags VERSION VERSION_MAJOR VERSION_MINOR VERSION_PATCH
    set(minor_match "${CMAKE_MATCH_2}")
    set(patch_match "${CMAKE_MATCH_3}")
- 
+
 -  set(git_path "${CMAKE_CURRENT_SOURCE_DIR}/.git")
 -  if(NOT EXISTS ${git_path})
 -    message(FATAL_ERROR "Not a Git repository: ${git_path}")
 -  endif()
--  
+-
 -  find_package(Git)
 -  if(NOT GIT_FOUND)
 -    message(FATAL_ERROR "Git not found")
@@ -188,5 +195,5 @@ index 0ea44d0..392f6a0 100644
 -  message(VERBOSE "Changes since last tag: " ${rev_count})
 -
    if (SYNERGY_VERSION_RELEASE)
-     
+
      message(VERBOSE "Version is release")
