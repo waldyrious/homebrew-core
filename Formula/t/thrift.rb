@@ -2,13 +2,12 @@ class Thrift < Formula
   desc "Framework for scalable cross-language services development"
   homepage "https://thrift.apache.org/"
   license "Apache-2.0"
-  revision 1
   compatibility_version 1
 
   stable do
-    url "https://www.apache.org/dyn/closer.lua?path=thrift/0.22.0/thrift-0.22.0.tar.gz"
-    mirror "https://archive.apache.org/dist/thrift/0.22.0/thrift-0.22.0.tar.gz"
-    sha256 "794a0e455787960d9f27ab92c38e34da27e8deeda7a5db0e59dc64a00df8a1e5"
+    url "https://www.apache.org/dyn/closer.lua?path=thrift/0.23.0/thrift-0.23.0.tar.gz"
+    mirror "https://archive.apache.org/dist/thrift/0.23.0/thrift-0.23.0.tar.gz"
+    sha256 "1859d932d2ae1f13d16c5a196931208c116310a5ff50f2bfd11d3db03be8f46f"
 
     # Fix -flat_namespace being used on Big Sur and later.
     patch do
